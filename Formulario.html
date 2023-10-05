@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title> Formulario Curriculum Vitae </title>
+    <link rel="stylesheet" href="estilos.css">
+  </head>
+<body>
+  <h1> Formulario </h1>
+  <form action="curriculum.php" method="post">
+
+    <div class="container">
+      <h2> Datos personales:</h2>
+      <label for="firstname">Nombre:</label>
+      <input type="text" id="firstname" name="fname" placeholder="firstname"><br><br> 
+  
+      <label for="lastname">Apellido:</label>
+      <input type="text" id="lastname" name="lname" placeholder="lastname"><br><br>
+  
+      <label for="nacimiento"> Fecha de Nacimiento: </label>
+      <input type="date" name="nacimiento"><br><br>
+  
+      <label for="ocupacion"> Ocupación: </label><br>
+      <input type="text" name="ocupacion"><br><br>
+  
+      <label for="contacto1"> Teléfono: </label><br>
+      <input type="text" name="contacto1"><br><br>
+  
+      <label for="contacto2"> E-mail: </label><br>
+      <input type="text" name="contacto2"><br><br>
+
+      <label for="nacionalidad"> Nacionalidad: </label><br>
+      <select name = "nacionalidad">
+      <option value="peruano"> peruano </option>
+      <option value="brasilero"> brasilero </option>
+      <option value="argentino"> argentino </option>
+      <option value="chileno"> chileno </option>
+      </select><br><br>
+    </div>
+    
+    <div class="container2">
+      <h2>Seleccione su nivel de inglés:</h2>
+      <input type="radio" name="Inglés" value="basico">
+      <label for="basico"> Básico </label><br>
+      <input type="radio" name="Inglés" value="intermedio">
+      <label for="intermedio"> Intermedio </label><br>
+      <input type="radio" name="Inglés" value="avanzado">
+      <label for="avanzado"> Avanzado </label> <br>
+      <input type="radio" name="Inglés" value="fluido">
+      <label for="fluido"> Fluido </label><br><br>
+  
+    <h2><label for="programacion"> Lenguajes de Programación: </label><br></h2>
+    <select multiple name="programacion">
+      <option>C++</option>
+      <option>Python</option>
+      <option>JavaScript</option>
+      <option>CSS</option>
+      <option>Java</option>
+    </select><br><br>
+  
+      <h2><label for="apt">Aptitudes:</label><br></h2>
+      <input list="aptitudes"  name="Aptitudes" />
+      <datalist id="aptitudes">
+      <option value="Inteligencia emocional">
+      <option value="habilidades de comunicacion">
+      <option value="Trabajo en equipo">
+      <option value="Resolucion de problemas">
+      <option value="capacidad de liderazgo">
+      </datalist><br><br>
+  
+      <h2><label for="Habilidades">Habilidades:</label><br></h2>
+      <input type="checkbox" name="habili">
+      <label for="habili">Acondicionamiento físico</label><br>
+      <input type="checkbox" name="habili">
+      <label for="habili">Creación videos deportivos</label><br><br>
+  
+  
+      <button type="submit">Login</button>
+    </div>
+  </form>
+</body>
+</html>
