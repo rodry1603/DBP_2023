@@ -1,82 +1,200 @@
-<!DOCTYPE html>  <!-- RODRIGO - Todo List -->
-<html lang="es">
+<!DOCTYPE html>
+<html>
 <head>
-<meta charset="UTF-8">
-<title>Todo List</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-  /* Estilos */
-  .tachado {
-    text-decoration: line-through;
-  }
+body {
+  margin: 0;
+  min-width: 250px;
+}
+
+
+* {
+  box-sizing: border-box;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+
+ul li {
+  cursor: pointer;
+  position: relative;
+  padding: 12px 8px 12px 40px;
+  list-style-type: none;
+  background: #eee;
+  font-size: 18px;
+  transition: 0.2s;
+  
+  
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+
+ul li:nth-child(odd) {
+  background: #f9f9f9;
+}
+
+
+ul li:hover {
+  background: #ddd;
+}
+
+
+ul li.checked {
+  background: #888;
+  color: #fff;
+  text-decoration: line-through;
+}
+
+
+ul li.checked::before {
+  content: '';
+  position: absolute;
+  border-color: #fff;
+  border-style: solid;
+  border-width: 0 2px 2px 0;
+  top: 10px;
+  left: 16px;
+  transform: rotate(45deg);
+  height: 15px;
+  width: 7px;
+}
+
+
+.close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 12px 16px 12px 16px;
+}
+
+.close:hover {
+  background-color: #6f36f4;
+  color: white;
+}
+
+
+.header {
+  background-color: #5936f4;
+  padding: 30px 40px;
+  color: white;
+  text-align: center;
+}
+
+
+.header:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+input {
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  width: 75%;
+  padding: 10px;
+  float: left;
+  font-size: 16px;
+}
+
+
+.addBtn {
+  padding: 10px;
+  width: 25%;
+  background: #d9d9d9;
+  color: #555;
+  float: left;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+  border-radius: 0;
+}
+
+.addBtn:hover {
+  background-color: #bbb;
+}
 </style>
 </head>
 <body>
 
-<div>
-  <input type="text" id="new-todo" placeholder="Add a new task">
-  <button onclick="addTodo()">Add Todo</button>
+<div id="myDIV" class="header">
+  <h2 style="margin:5px"> To Do List</h2>
+  <input type="text" id="myInput" placeholder="Title...">
+  <span onclick="newElement()" class="addBtn">Add</span>
 </div>
 
-<ul id="todo-list">
-  <!-- TTodo Agregar lista -->
+<ul id="myUL">
+  <li>Ir al gimnasio</li>
+  <li class="checked">Pagar cuentas</li>
+  <li>Visitar a papa</li>
+  <li>Comprar leche</li>
+  <li>Leer libro</li>
+  <li>Organizar oficina</li>
 </ul>
 
-<button onclick="completeAll()">Complete All</button>
-
 <script>
-// JavaScript 
-
-function addTodo() {
-  var input = document.getElementById('new-todo');
-  var todoText = input.value;
-  if (todoText === '') {
-    alert('Agrega una Tarea.');
-    return;
-  }
-
-  var li = document.createElement('li');
-  var checkbox = document.createElement('input');
-  checkbox.type = 'checkbox';
-  checkbox.onclick = toggleTodo;
-
-  var span = document.createElement('span');
-  span.textContent = todoText;
-
-  var deleteBtn = document.createElement('button');
-  deleteBtn.textContent = 'x';
-  deleteBtn.onclick = deleteTodo;
-
-  li.appendChild(checkbox);
-  li.appendChild(span);
-  li.appendChild(deleteBtn);
-
-  document.getElementById('todo-list').appendChild(li);
-
-  input.value = '';
+// crear un boton close y agregarlo a cada elemento de la lista
+var myNodelist = document.getElementsByTagName("LI");
+var i;
+for (i = 0; i < myNodelist.length; i++) {
+  var span = document.createElement("SPAN");
+  var txt = document.createTextNode("\u00D7");
+  span.className = "close";
+  span.appendChild(txt);
+  myNodelist[i].appendChild(span);
 }
 
-function toggleTodo(event) {
-  var checkbox = event.target;
-  var todo = checkbox.nextSibling;
-  if (checkbox.checked) {
-    todo.classList.add('tachado');
+// Click en el boton close para "ocultar" el elemento de la lista
+var close = document.getElementsByClassName("close");
+var i;
+for (i = 0; i < close.length; i++) {
+  close[i].onclick = function() {
+    var div = this.parentElement;
+    div.style.display = "none";
+  }
+}
+
+// Agregar check
+var list = document.querySelector('ul');
+list.addEventListener('click', function(ev) {
+  if (ev.target.tagName === 'LI') {
+    ev.target.classList.toggle('checked');
+  }
+}, false);
+
+// crear un nuevo elemento de la lista
+function newElement() {
+  var li = document.createElement("li");
+  var inputValue = document.getElementById("myInput").value;
+  var t = document.createTextNode(inputValue);
+  li.appendChild(t);
+  if (inputValue === '') {
+    alert("You must write something!");
   } else {
-    todo.classList.remove('tachado');
+    document.getElementById("myUL").appendChild(li);
   }
-}
+  document.getElementById("myInput").value = "";
 
-function deleteTodo(event) {
-  var todo = event.target.parentNode;
-  todo.remove();
-}
+  var span = document.createElement("SPAN");
+  var txt = document.createTextNode("\u00D7");
+  span.className = "close";
+  span.appendChild(txt);
+  li.appendChild(span);
 
-function completeAll() {
-  var todos = document.getElementById('todo-list').children;
-  for (var i = 0; i < todos.length; i++) {
-    var checkbox = todos[i].getElementsByTagName('input')[0];
-    checkbox.checked = true;
-    var todo = checkbox.nextSibling;
-    todo.classList.add('tachado');
+  for (i = 0; i < close.length; i++) {
+    close[i].onclick = function() {
+      var div = this.parentElement;
+      div.style.display = "none";
+    }
   }
 }
 </script>
