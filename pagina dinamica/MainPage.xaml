@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Formulario.MainPage"
+             NavigationPage.HasNavigationBar="False">
+
+        <Grid RowDefinitions="auto,*" BackgroundColor="#eee">
+            <StackLayout BackgroundColor="#9196F3" 
+                         Padding="24"
+                         Grid.Row="0">
+                <Label Text="Formulario" 
+                       HorizontalTextAlignment="Center" 
+                       TextColor="White" 
+                       FontSize="36"/>
+            <ProgressBar Progress=".0"
+                x:Name="progress"
+                ></ProgressBar>
+            </StackLayout>
+
+        <ScrollView Grid.Row="1">
+            <StackLayout Padding="10" Margin="10" 
+                         BackgroundColor="#fff">
+                <StackLayout>
+                    <Label Text="Nombres"
+                           FontSize="18"/>
+                    <Entry Placeholder="Jean Marc"
+                           PlaceholderColor="#aaa"
+                           x:Name="nombre"
+                           TextChanged="en_nombre_completed"/>
+                </StackLayout>
+                <StackLayout>
+                    <Label Text="Apellidos"
+                           FontSize="18"/>
+                    <Entry Placeholder="Nadeau Huamani"
+                           PlaceholderColor="#aaa"
+                           x:Name="apellido"
+                           TextChanged="en_apellido_completed"/>
+                </StackLayout>
+                <Label Text="Nivel de estudios" 
+                       FontSize="18"/>
+                <Grid ColumnDefinitions="auto, *" 
+                      RowDefinitions="auto, *">
+                    <Label VerticalOptions="Center"
+                           Text="Secundaria"
+                           Grid.Row="0"
+                           Grid.Column="1"/>
+                    <CheckBox x:Name="secundaria"
+                              Color="#9196F3"
+                              Grid.Row="0"
+                              Grid.Column="0"/>
+                    <Label VerticalOptions="Center" 
+                           Text="Tecnico"
+                           Grid.Row="1"
+                           Grid.Column="1"/>
+                    <CheckBox x:Name="tecnico" 
+                              Color="#9196F3"
+                              Grid.Row="1"
+                              Grid.Column="0"/>
+                    <Label VerticalOptions="Center"
+                           Text="Universidad"
+                           Grid.Row="2"
+                           Grid.Column="1"/>
+                    <CheckBox x:Name="universidad" 
+                              Color="#9196F3"
+                              Grid.Row="2"
+                              Grid.Column="0"/>
+                </Grid>
+                <StackLayout>
+                    <Label Text="Años de experiencia"
+                           FontSize="18"/>
+                    <Entry Placeholder="5" 
+                           Keyboard="Numeric"
+                           PlaceholderColor="#aaa"
+                           x:Name="xp"
+                           TextChanged="en_xp_completed"/>
+                </StackLayout>
+                <StackLayout>
+                    <Label Text="Area de trabajo"
+                           FontSize="18"/>
+                    <Entry Placeholder="Administracion, front-end, etc" 
+                           PlaceholderColor="#aaa"
+                           x:Name="area"
+                           TextChanged="en_area_completed"/>
+                </StackLayout>
+                <StackLayout>
+                    <Label Text="Numero de telefono"
+                           FontSize="18"/>
+                    <Entry Placeholder="962864411" 
+                           Keyboard="Numeric"
+                           PlaceholderColor="#aaa"
+                           x:Name="tel"
+                           TextChanged="en_tel_completed"/>
+                </StackLayout>
+                <StackLayout>
+                    <Label Text="Correo"
+                           FontSize="18"/>
+                    <Entry Placeholder="jean.nadeau@ucsp.edu.pe" 
+                           PlaceholderColor="#aaa"
+                           x:Name="correo"
+                           TextChanged="en_correo_completed"/>
+                </StackLayout>
+
+                <Button BackgroundColor="#9196F3" 
+                        Text="Listo!!" 
+                        TextColor="White"
+                        x:Name="listo"
+                        Clicked="btn_Listo_Clicked"
+                        ></Button>
+            </StackLayout>
+        </ScrollView>
+    </Grid>
+
+</ContentPage>
