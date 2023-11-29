@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Formscv.MainPage">
+
+    <StackLayout>
+        <Label x:Name="lbl_principal"
+               Text="Bienvenido. Ingrese sus datos"
+               FontSize="Medium"/>
+        <ProgressBar x:Name="lbl_principal"
+               Progress=".5"/>
+        <Grid>
+            <Label x:Name="lbl_progress"
+                   Text="50%"
+                   FontSize="Large"/>
+            <Switch x:Name="sw_example"/>
+        </Grid>
+        <Frame>
+            <StackLayout>
+                <Entry x:Name="lbl_nombre"
+                   Placeholder="Ingrese su Nombre"
+                   FontSize="Medium"/>
+                <Entry x:Name="lbl_correo"
+                       Placeholder="Ingrese su correo"
+                       FontSize="Medium"/>
+                <Entry x:Name="lbl_password"
+                       Placeholder="Ingrese su contraseña"
+                       FontSize="Medium"/>
+                <Entry x:Name="lbl_password2"
+                       Placeholder="Repita su contraseña"
+                       FontSize="Medium"/>
+                <Grid>
+                    <CheckBox x:Name="cbox_terminos"
+                              IsChecked="False"
+                              CheckedChanged="cbox_terminos_checkedChanged"/>
+                    <Label Text ="Acepto los terminos y condiciones"/>
+
+                </Grid>
+            </StackLayout>
+        </Frame>
+        <Button x:Name="btn_register"
+                Text="Registrar"
+                FontSize="Large"
+                Clicked="btn_register_Clicked"/>
+    </StackLayout>
+
+</ContentPage>
